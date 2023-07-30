@@ -84,6 +84,18 @@ func lanczos5(in float64) float64 {
 	}
 	return 0
 }
+func lanczos7(in float64) float64 {
+	if in > -7 && in < 7 {
+		return sinc(in) * sinc(in*0.14285714285)
+	}
+	return 0
+}
+func lanczos9(in float64) float64 {
+	if in > -9 && in < 9 {
+		return sinc(in) * sinc(in*0.1111111111111111)
+	}
+	return 0
+}
 
 // range [-256,256]
 func createWeights8(dy, filterLength int, blur, scale float64, kernel func(float64) float64) ([]int16, []int, int) {

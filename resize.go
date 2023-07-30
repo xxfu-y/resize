@@ -51,6 +51,8 @@ const (
 	// Lanczos interpolation (a=3)
 	Lanczos3
 	Lanczos5
+	Lanczos7
+	Lanczos9
 )
 
 // kernal, returns an InterpolationFunctions taps and kernel.
@@ -68,6 +70,10 @@ func (i InterpolationFunction) kernel() (int, func(float64) float64) {
 		return 6, lanczos3
 	case Lanczos5:
 		return 10, lanczos5
+	case Lanczos7:
+		return 14, lanczos7
+	case Lanczos9:
+		return 18, lanczos9
 	default:
 		// Default to NearestNeighbor.
 		return 2, nearest
