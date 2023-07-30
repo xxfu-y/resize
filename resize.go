@@ -21,7 +21,8 @@ THIS SOFTWARE.
 // utilized in the computations.
 //
 // Example:
-//     imgResized := resize.Resize(1000, 0, imgOld, resize.MitchellNetravali)
+//
+//	imgResized := resize.Resize(1000, 0, imgOld, resize.MitchellNetravali)
 package resize
 
 import (
@@ -49,6 +50,7 @@ const (
 	Lanczos2
 	// Lanczos interpolation (a=3)
 	Lanczos3
+	Lanczos5
 )
 
 // kernal, returns an InterpolationFunctions taps and kernel.
@@ -64,6 +66,8 @@ func (i InterpolationFunction) kernel() (int, func(float64) float64) {
 		return 4, lanczos2
 	case Lanczos3:
 		return 6, lanczos3
+	case Lanczos5:
+		return 10, lanczos5
 	default:
 		// Default to NearestNeighbor.
 		return 2, nearest
